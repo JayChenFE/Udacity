@@ -161,5 +161,5 @@ function checkCollisions() {
         return enemy.y === player.y &&
             (enemy.x > player.x - DEFINE.IMAGE_WIDTH) &&
             (enemy.x < player.x + DEFINE.IMAGE_WIDTH);
-    })
+    });
 }

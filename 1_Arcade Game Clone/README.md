@@ -1,6 +1,14 @@
-前端纳米学位街机游戏项目
-===============================
+#经典街机游戏克隆
 
-学生应该用这个[评审标准](https://review.udacity.com/#!/projects/2696458597/rubric)来自我检查自己提交的代码。 确认自己写的函数要是**面向对象的** -  要么是类函数（就像函数 Player 和 Enemy）要么是类的原型链上的函数比如 Enemy.prototype.checkCollisions ， 在类函数里面或者类的原型链函数里面适当的使用关键词 'this' 来引用调用该函数的对象实例。最后保证你的**readme.md**文件要写明关于如何运行和如何玩你的街机游戏的指引。
+## [预览地址](https://jaychenfe.github.io/Udacity/1_Arcade%20Game%20Clone/)
 
-关于如何开始这个项目的更详细的指导，可以查阅这一份[指南](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true)
+## 操作方法及游戏规则
+  
+  - 使用键盘的方向键←↑→↓控制主角
+  - 撞到虫子游戏失败,玩家回到起点
+  - 到达对面的河岸后游戏成功,玩家回到起点
+
+## 代码描述
+- resources.js:资源加载器
+- engine.js:游戏引擎,控制游戏流程
+- app.js:控制人物和敌人状态,定义边界条件和事件
