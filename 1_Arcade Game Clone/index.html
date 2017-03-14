@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iconfont.css">
 </head>
+
 <body>
+    <div id="main">
+        <div id="pop" class="hide">
+            <div id="mask"></div>
+            <div id="layer">
+                <div id="crown-ct" class="ele-ct warp">
+                    <i class="icon iconfont icon-crown center"></i>
+                </div>
+                <div class="ele-ct warp">
+                    <p id="msg" class="center">
+                        恭喜您,闯关成功!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/utils.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>

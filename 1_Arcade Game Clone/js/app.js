@@ -1,3 +1,7 @@
+/* app.js
+ * 定义了玩家的和敌人状态以及事件
+ */
+"use strict";
 //定义常量
 var DEFINE = {
     CANVAS_WIDTH: 505,
@@ -12,9 +16,11 @@ var DEFINE = {
     ENEMY_SPEED_RATE_MAX: 6,
     PLAYER_START_X: 202,
     PLAYER_START_Y: 385,
-    PLAYER_Y_MIN: 30,
-
+    PLAYER_Y_MIN: 30
 };
+
+//获取弹窗dom元素
+var pop = document.getElementById('pop');
 
 // 这是我们的玩家要躲避的敌人 
 var Enemy = function() {
@@ -23,10 +29,10 @@ var Enemy = function() {
 
     // 敌人的图片或者雪碧图，用一个我们提供的工具函数来轻松的加载文件
     this.sprite = 'images/enemy-bug.png';
-    this.speed = this.getSpeed();//速度
-    this.originX = this.getStartX();//初始x坐标
-    this.x = this.originX;//x坐标
-    this.y = this.getStartY();//y坐标
+    this.speed = this.getSpeed(); //速度
+    this.originX = this.getStartX(); //初始x坐标
+    this.x = this.originX; //x坐标
+    this.y = this.getStartY(); //y坐标
 };
 
 // 此为游戏必须的函数，用来更新敌人的位置
@@ -49,21 +55,21 @@ Enemy.prototype.render = function() {
 //获取敌人速度
 Enemy.prototype.getSpeed = function() {
     //取得随机倍数(1-最大倍数)
-    var rate = getRandomNmuberInculdMax(1, DEFINE.ENEMY_SPEED_RATE_MAX);
+    var rate = Utils.getRandomNumberInculdMax(1, DEFINE.ENEMY_SPEED_RATE_MAX);
     return DEFINE.ENEMY_SPEED_BASIC * rate;
 };
 
 //获取敌人初始X坐标
 Enemy.prototype.getStartX = function() {
-    //取得随机偏左列数0- -3
-    var ranCol = getRandomNmuberInculdMax(-3, 0);
+    //取得随机偏左列数(负3-0)
+    var ranCol = Utils.getRandomNumberInculdMax(-3, 0);
     return ranCol * DEFINE.IMAGE_WIDTH + DEFINE.ENEMY_START_X;
 };
 
 //获取敌人初始Y坐标
 Enemy.prototype.getStartY = function() {
     //取得随机行数1-3
-    var ranRow = getRandomNmuberInculdMax(1, 3);
+    var ranRow = Utils.getRandomNumberInculdMax(1, 3);
     return ranRow * DEFINE.IMAGE_HEIGHT - DEFINE.PLAYER_Y_MIN;
 };
 
@@ -78,9 +84,17 @@ var Player = function(x, y) {
 //更新玩家坐标
 Player.prototype.update = function() {
     //到达终点或碰撞时,返回起点
-    if (this.y <= DEFINE.PLAYER_Y_MIN || checkCollisions()) {
+    if (checkCollisions()) {
         this.x = DEFINE.PLAYER_START_X;
         this.y = DEFINE.PLAYER_START_Y;
+        return;
+    }
+    //闯关成功时,返回起点,并显示胜利画面
+    if (this.y <= DEFINE.PLAYER_Y_MIN) {
+        this.x = DEFINE.PLAYER_START_X;
+        this.y = DEFINE.PLAYER_START_Y;
+        showVictory();
+        return;
     }
 };
 
@@ -93,24 +107,23 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(orientation) {
 
     switch (orientation) {
-
         //左移
         case "left":
             if (this.x >= DEFINE.IMAGE_WIDTH) {
                 this.x -= DEFINE.IMAGE_WIDTH;
             }
             break;
-        //右移
+            //右移
         case "right":
             if (this.x <= DEFINE.IMAGE_WIDTH * 3) {
                 this.x += DEFINE.IMAGE_WIDTH;
             }
             break;
-        //上移
+            //上移
         case "up":
             this.y -= DEFINE.IMAGE_HEIGHT;
             break;
-        //下移
+            //下移
         case "down":
             if (this.y < DEFINE.PLAYER_START_Y) {
                 this.y += DEFINE.IMAGE_HEIGHT;
@@ -119,9 +132,7 @@ Player.prototype.handleInput = function(orientation) {
 
         default:
             break;
-
     }
-
 };
 
 // 现在实例化你的所有对象
@@ -148,10 +159,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-//获取从min都max之间的随机整数，包括min和max
-function getRandomNmuberInculdMax(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 
 //碰撞检测
 function checkCollisions() {
@@ -162,4 +170,14 @@ function checkCollisions() {
             (enemy.x > player.x - DEFINE.IMAGE_WIDTH) &&
             (enemy.x < player.x + DEFINE.IMAGE_WIDTH);
     });
+}
+
+//显示胜利画面
+function showVictory() {
+    //显示弹窗
+    Utils.removeClass(pop, 'hide');
+    //1.5s后关闭弹窗
+    setTimeout(function() {
+        Utils.addClass(pop, 'hide');
+    }, 1500);
 }

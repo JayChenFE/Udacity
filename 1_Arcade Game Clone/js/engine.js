@@ -17,13 +17,14 @@ var Engine = (function(global) {
      */
     var doc = global.document,
         win = global.window,
+        mainEle = doc.getElementById('main'),
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
 
     canvas.width = DEFINE.CANVAS_WIDTH;
     canvas.height = DEFINE.CANVAS_HEIGHT;
-    doc.body.appendChild(canvas);
+    mainEle.appendChild(canvas);
 
     /* 这个函数是整个游戏的主入口，负责适当的调用 update / render 函数 */
     function main() {
@@ -84,6 +85,8 @@ var Engine = (function(global) {
      * 怎么工作的，他们就像是那种每一页上都画着不同画儿的书，快速翻动的时候就会出现是
      * 动画的幻觉，但是实际上，他们只是不停的在重绘整个屏幕。
      */
+    "use strict";
+
     function render() {
         /* 这个数组保存着游戏关卡的特有的行对应的图片相对路径。 */
         var rowImages = [
