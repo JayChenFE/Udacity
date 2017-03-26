@@ -14,26 +14,40 @@ var DEFINE = {
     ENEMY_START_X: -70,
     ENEMY_SPEED_BASIC: 50,
     ENEMY_SPEED_RATE_MAX: 6,
+    ENEMY_SPIRIT: 'images/enemy-bug.png',
     PLAYER_START_X: 202,
     PLAYER_START_Y: 385,
-    PLAYER_Y_MIN: 30
+    PLAYER_Y_MIN: 30,
+    PLAYER_SPRITE: 'images/char-pink-girl.png'
 };
 
 //获取弹窗dom元素
 var pop = document.getElementById('pop');
 
+//游戏中实体对象的构造函数,包括玩家和敌人
+var Entity = function(sprite) {
+    this.sprite = sprite;
+};
+
+//在游戏中画出敌人和玩家
+Entity.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 // 这是我们的玩家要躲避的敌人 
 var Enemy = function() {
     // 要应用到每个敌人的实例的变量写在这里
     // 我们已经提供了一个来帮助你实现更多
-
-    // 敌人的图片或者雪碧图，用一个我们提供的工具函数来轻松的加载文件
-    this.sprite = 'images/enemy-bug.png';
     this.speed = this.getSpeed(); //速度
     this.originX = this.getStartX(); //初始x坐标
     this.x = this.originX; //x坐标
     this.y = this.getStartY(); //y坐标
+
+    //继承父对象属性
+    Entity.call(this, DEFINE.ENEMY_SPIRIT);
 };
+
+//继承父对象方法
+Enemy.prototype = new Entity();
 
 // 此为游戏必须的函数，用来更新敌人的位置
 // 参数: dt ，表示时间间隙
@@ -45,11 +59,6 @@ Enemy.prototype.update = function(dt) {
     if (this.x > DEFINE.CANVAS_WIDTH) {
         this.x = this.originX;
     }
-};
-
-// 此为游戏必须的函数，用来在屏幕上画出敌人，
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //获取敌人速度
@@ -75,32 +84,35 @@ Enemy.prototype.getStartY = function() {
 
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
-var Player = function(x, y) {
+var Player = function(x, y, spirit) {
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-pink-girl.png';
+     //继承父对象属性
+    Entity.call(this, DEFINE.PLAYER_SPRITE);
+};
+
+ //继承父对象方法
+Player.prototype = new Entity();
+
+//返回起点
+Player.prototype.reset = function() {
+    this.x = DEFINE.PLAYER_START_X;
+    this.y = DEFINE.PLAYER_START_Y;
 };
 
 //更新玩家坐标
 Player.prototype.update = function() {
     //到达终点或碰撞时,返回起点
     if (checkCollisions()) {
-        this.x = DEFINE.PLAYER_START_X;
-        this.y = DEFINE.PLAYER_START_Y;
+        this.reset();
         return;
     }
     //闯关成功时,返回起点,并显示胜利画面
     if (this.y <= DEFINE.PLAYER_Y_MIN) {
-        this.x = DEFINE.PLAYER_START_X;
-        this.y = DEFINE.PLAYER_START_Y;
+        this.reset();
         showVictory();
         return;
     }
-};
-
-//重绘玩家
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //键盘输入事件
