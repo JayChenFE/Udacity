@@ -18,7 +18,11 @@ var DEFINE = {
     PLAYER_START_X: 202,
     PLAYER_START_Y: 385,
     PLAYER_Y_MIN: 30,
-    PLAYER_SPRITE: 'images/char-pink-girl.png'
+    PLAYER_SPRITE: 'images/char-pink-girl.png',
+    KEY_UP: "up",
+    KEY_DOWN: "down",
+    KEY_LEFT: "left",
+    KEY_RIGHT: "right",
 };
 
 //获取弹窗dom元素
@@ -87,11 +91,11 @@ Enemy.prototype.getStartY = function() {
 var Player = function(x, y, spirit) {
     this.x = x;
     this.y = y;
-     //继承父对象属性
+    //继承父对象属性
     Entity.call(this, DEFINE.PLAYER_SPRITE);
 };
 
- //继承父对象方法
+//继承父对象方法
 Player.prototype = new Entity();
 
 //返回起点
@@ -162,10 +166,10 @@ for (var i = 0; i < DEFINE.ENEMY_NUMBER; i++) {
 // 方法里面。你不需要再更改这段代码了。
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+        37: DEFINE.KEY_LEFT,
+        38: DEFINE.KEY_UP,
+        39: DEFINE.KEY_RIGHT,
+        40: DEFINE.KEY_DOWN
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
