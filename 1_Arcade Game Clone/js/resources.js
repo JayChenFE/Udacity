@@ -13,7 +13,8 @@
     function load(urlOrArr) {
         if(urlOrArr instanceof Array) {
             /* 如果开发者传进来一个图片数组，循环访问每个值，然后调用我们的图片加载器 */
-            urlOrArr.forEach(function(url) {
+            urlOrArr
+.forEach(function(url) {
                 _load(url);
             });
         } else {
