@@ -3,11 +3,15 @@
 ## 目标
 尽可能优化这个在线项目的速度
 
-- 优化 index.html 的 PageSpeed Insights 得分>90
-- 优化 pizza.html 的 FPS（每秒帧数）>60
+- `index.html` 在移动设备和桌面上的 PageSpeed 分数至少为 90 分。
+- 对 `views/js/main.js` 进行的优化可使`views/pizza.html`在滚动时保持 60fps 的帧速。
+- 利用 `views/pizza.html` 页面上的 pizza 尺寸滑块调整 pizza 大小的时间小于 5 毫秒
 
 ## 线上地址
 
+ - [预览 index.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/)
+ - [预览 pizza.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/views/pizza.htm)
+  
 ## 优化内容
 - **index.html**
     - 从style.css中分离竖屏时才需要加载的部分,另存为protrait.css
@@ -24,16 +28,16 @@
     -  使用 requestAnimationFrame 优化 updatePositions 中的绘制动画操作
     -  为披萨滑窗增加了 will-change CSS 属性，这样每一个 pizza 都会有自己的图层，可以避免图层重绘制
     -  减少页面加载时生成的pizza数量
-    -  使用 getElementById  querySelector, 提高 javascript 运行效率
+    -  使用 getElementById代替querySelector, 提高 javascript 运行效率
 
 ## 优化结果
 - **index.html**
-![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result1.png)
+![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result1.png)
 
-![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result2.png)
+![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result2.png)
 
 
 -  **pizza.html**
-![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result3.png)
+![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result3.png)
 
-![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result4.png)
+![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result4.png)
