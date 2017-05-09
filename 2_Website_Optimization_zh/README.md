@@ -16,8 +16,8 @@
     - 通过[Web Font Loader ](https://www.lockedowndesign.com/load-google-fonts-asynchronously-for-page-speed/)异步加载谷歌字体
     - 为analytics.js添加async属性,异步加载
     - 将content中的图片下载到本地文件夹并修改引用
-    - 在网站根目录下增加[.htaccess](http://httpd.apache.org/docs/2.2/howto/htaccess.html)文件,[使用浏览器缓存](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching)
-    - 压缩图片
+    - 参考[基于 google-analytics 的 angular 网站运营分析方法](https://segmentfault.com/a/1190000003914167)添加google-analytics统计分析
+    - 压缩图片和HTML
 
 -  **pizza.html**
     -  对`changePizzaSizes`函数进行了重构，先读取样式而后执行更改以避免强制同步布局问题
