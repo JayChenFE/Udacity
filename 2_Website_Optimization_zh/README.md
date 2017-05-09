@@ -10,7 +10,7 @@
 ## 线上地址
 
  - [预览 index.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/)
- - [预览 pizza.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/views/pizza.htm)
+ - [预览 pizza.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/views/pizza.html)
   
 ## 优化内容
 - **index.html**
