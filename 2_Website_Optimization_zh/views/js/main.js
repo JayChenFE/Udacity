@@ -422,16 +422,16 @@ var resizePizzas = function(size) {
 
   // 改变滑窗前披萨的尺寸值
   function changeSliderLabel(size) {
-    var pizzaSizeInner = document.getElementById("pizzaSize").innerHTML;
+    var pizzaSizeInner = document.getElementById("pizzaSize");
     switch (size) {
       case "1":
-        pizzaSizeInner = "Small";
+        pizzaSizeInner.innerHTML = "Small";
         return;
       case "2":
-        pizzaSizeInner = "Medium";
+        pizzaSizeInner.innerHTML = "Medium";
         return;
       case "3":
-        pizzaSizeInner = "Large";
+        pizzaSizeInner.innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");

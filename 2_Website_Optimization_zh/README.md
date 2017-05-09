@@ -23,6 +23,17 @@
     -  对`changePizzaSizes`函数进行了重构，先读取样式而后执行更改以避免强制同步布局问题
     -  使用 requestAnimationFrame 优化 updatePositions 中的绘制动画操作
     -  为披萨滑窗增加了 will-change CSS 属性，这样每一个 pizza 都会有自己的图层，可以避免图层重绘制
+    -  减少页面加载时生成的pizza数量
     -  使用 getElementById  querySelector, 提高 javascript 运行效率
 
 ## 优化结果
+- **index.html**
+![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result1.png)
+
+![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result2.png)
+
+
+-  **pizza.html**
+![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result3.png)
+
+![](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh/result/result4.png)
