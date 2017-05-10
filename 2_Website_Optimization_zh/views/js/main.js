@@ -457,7 +457,7 @@ var resizePizzas = function(size) {
   // 遍历披萨的元素并改变它们的宽度
   function changePizzaSizes(size) {
     var widthPercent = determineWidthPercent(size);
-    var pizzaCt = document.querySelectorAll(".randomPizzaContainer");
+    var pizzaCt = document.getElementByClassName("randomPizzaContainer");
     for (var i = 0, length = pizzaCt.length; i < length; i++) {
       pizzaCt[i].style.width = widthPercent + '%';
     }
@@ -524,11 +524,17 @@ function updatePositions() {
 
 //将一些操作从循环中移出以优化性能，用 transform 代替了 left 以避免强制同步布局
 function render() {
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementByClassName('mover');
   var p = document.body.scrollTop / 1250;
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(p + (i % 5));
-    items[i].style.transform = "translateX(" + (100 * phase) + "px)";
+  var phaseTrans = [];
+
+  for (var i = 0; i < 5; i++) {
+    phaseTrans.push("translateX(" + Math.sin(scrollTop / 1250 + i) * 100 + "px)");
+  }
+
+  for (var i = 0, max = items.length; i < max; i++) {
+    phase = Math.sin(p + (i % 5));
+    items[i].style.transform = phaseTrans[i % 5];
   }
 }
 // 在页面滚动时运行updatePositions函数
