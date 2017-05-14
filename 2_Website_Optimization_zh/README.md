@@ -33,14 +33,15 @@
 ## 优化结果
 - **index.html**
 
-![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result1.png)
+![](https://raw.githubusercontent.com/JayChenFE/Udacity/master/2_Website_Optimization_zh/result/result1.png)
 
 
-![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result2.png)
+
+![](https://raw.githubusercontent.com/JayChenFE/Udacity/master/2_Website_Optimization_zh/result/result2.png)
 
 
 -  **pizza.html**
 
-![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result3.png)
+![](https://raw.githubusercontent.com/JayChenFE/Udacity/master/2_Website_Optimization_zh/result/result3.png)
 
-![](https://github.com/JayChenFE/Udacity/blob/master/2_Website_Optimization_zh/result/result4.png)
+![](https://raw.githubusercontent.com/JayChenFE/Udacity/master/2_Website_Optimization_zh/result/result4.png)
