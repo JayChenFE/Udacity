@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Book from './book';
 
-function BookSelf({ name, books, updateBookShelf }) {
+function Bookshelf({ name, books, updateBookShelf }) {
     return (<div className="bookshelf">
         <h2 className="bookshelf-title">{name}</h2>
         <div className="bookshelf-books">
@@ -21,4 +21,4 @@ function BookSelf({ name, books, updateBookShelf }) {
     </div>)
 }
 
-export default BookSelf
+export default Bookshelf

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Bookshelf from './bookshelf';
 
-class BookStroe extends Component {
+class Bookstroe extends Component {
 
     filterBook = shelf => { this.props.books.fliter(book => book.shelf === shelf) }
 
@@ -14,16 +14,13 @@ class BookStroe extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Bookshelf name='Currently Reading' moveBook={moveBook} books={filterBook('currentlyReading')}>
-                    </Bookshelf>
-                    <Bookshelf name='Want to Read' moveBook={moveBook} books={filterBook('wantToRead')}>
-                    </Bookshelf>
-                    <Bookshelf name='Read' moveBook={moveBook} books={filterBook('read')}>
-                    </Bookshelf>
+                    <Bookshelf name='Currently Reading' moveBook={moveBook} books={this.filterBook('currentlyReading')}></Bookshelf>
+                    <Bookshelf name='Want to Read' moveBook={moveBook} books={this.filterBook('wantToRead')}></Bookshelf>
+                    <Bookshelf name='Read' moveBook={moveBook} books={this.filterBook('read')}></Bookshelf>
                 </div>
             </div>
         )
     }
 }
 
-export default BookStroe
+export default Bookstroe

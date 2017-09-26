@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 class Book extends Component {
 
     constructor() {
+        super()
         this.state = { shelf: 'none' }
     }
 
-    move = value => {
-
+    moveBook = value => {
+        this.props.moveBook({ id: this.props.id }, value)
+        this.setState({ shelf: value })
     }
 
 
@@ -20,7 +22,7 @@ class Book extends Component {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnail}")` }}></div>
                     <div className="book-shelf-changer">
                         <select
-                            onChange={e => this.move(e.target.value)}>
+                            onChange={e => this.moveBook(e.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
