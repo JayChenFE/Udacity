@@ -12,7 +12,6 @@ class Book extends Component {
         this.setState({ shelf: value })
     }
 
-
     render() {
         const { title, authors, imageLinks: { thumbnail } } = this.props
 
