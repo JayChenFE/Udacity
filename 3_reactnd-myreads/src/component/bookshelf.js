@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Book from './book';
+import React from 'react'
+import Book from './Book';
 
 export default function Bookshelf({ name, books, moveBook }) {
 
@@ -8,7 +8,7 @@ export default function Bookshelf({ name, books, moveBook }) {
         <div className="bookshelf-books">
             <ol className="books-grid">
                 {
-                    books.sort((x, y) => { x.title < y.title })
+                    books.sort((x, y) => x.title < y.title)
                         .map(book => (
                             <li key={book.id}>
                                 <Book id={book.id} title={book.title} imageLinks={book.imageLinks}
