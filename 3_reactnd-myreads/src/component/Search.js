@@ -7,21 +7,29 @@ class Search extends Component {
 
     constructor() {
         super()
-        this.state = { query: '', books: [] }
+        this.state = { books: [] }
     }
 
-    updateQuery = query => {
-        this.setState({ query: query.trim() })
-    }
 
-    search = _ => {
-        const { query } = this.state
+
+    search = query => {
+
         const { existBooks } = this.props
-        BooksAPI.search(query, 20).then(resultBooks => {
-            debugger
+        BooksAPI.search(query.trim(), 20).then(resultBooks => {
             if (resultBooks && resultBooks.length > 0) {
-                //resultBooks
 
+                const mergedBooks =
+                    resultBooks.filter(book =>
+                        existBooks.findIndex(existBook => existBook.id === book.id) === -1)
+                        .map(book => {
+                            book.shelf = 'none'
+                            return book
+                        }).concat(
+                        existBooks.filter(book =>
+                            resultBooks.findIndex(resultBook => resultBook.id === book.id) >= 0))
+
+
+                this.setState({ books: mergedBooks })
             }
         })
     }
@@ -35,12 +43,11 @@ class Search extends Component {
                 <div className="search-books-bar">
                     <Link className="close-search" to='/'>Close</Link>
                     <div className="search-books-input-wrapper">
-                        <input type="text" placeholder="Search by title or author, press Enter to go"
-                            onChange={event => this.updateQuery(event.target.value)}
-                            onKeyPress={event => {
+                        <input type="text" placeholder="Type in  title or author, and press Enter"
+                            //onChange={event => this.updateQuery(event.target.value)}
+                            onKeyUp={event => {
                                 if (event.keyCode === 13) {
-                                    alert('hi')
-                                    this.search()
+                                    this.search(event.target.value);
                                 }
                             }} />
                     </div>
