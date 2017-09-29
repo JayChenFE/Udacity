@@ -18,9 +18,10 @@ npm start
 
 - Arranging books by categories
 - Moving books between shelves
-- Searching  and adding books to the shelves
-- Ranking the books
+- Searching books
+- Adding books from search result to the shelves
+- Ranking  books
 
 ## Notes
 
-- The star ranking datas are storaged in the localStorge of the browser
+- The star ranking data are stored in the localStorge of the browser
