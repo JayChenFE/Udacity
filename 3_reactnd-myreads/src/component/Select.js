@@ -3,18 +3,13 @@ import React, { Component } from 'react'
 class Select extends Component {
 
     move = value => {
-        const { category, moveBook, moveBooks } = this.props
-        
-        if (category) {
-            
-        } else {
-            
-        }
+        const { category, shelf, moveBook, moveBooks } = this.props
 
+        category ? moveBooks(shelf, value) : moveBook(value)
     }
 
     render() {
-
+        const { shelf } = this.props
         return (
             <div className="book-shelf-changer">
                 <select

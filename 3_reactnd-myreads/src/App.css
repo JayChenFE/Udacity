@@ -144,6 +144,14 @@ body, .app {
   display: flex;
   align-items: flex-end;
 }
+.select-container{
+  position: relative;
+}
+.select-container .book-shelf-changer{
+  position: absolute;
+  left:0;
+  top: -20px;
+}
 
 .book-shelf-changer {
   position: absolute;

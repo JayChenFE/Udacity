@@ -21,11 +21,11 @@ class BooksApp extends React.Component {
 
   moveBooks = (originShelf, destinationShelf) => {
     let { books } = this.state,
-      updatedBooks = books.filter(book => book.shelf === originShelf)
-    allBooks = []
+      updatedBooks = books.filter(book => book.shelf === originShelf),
+      allBooks = []
 
     updatedBooks.forEach(book => {
-      BooksAPI.update(book, updatedShelf)
+      BooksAPI.update(book, destinationShelf)
       book.shelf = destinationShelf
     })
     allBooks = books.filter(book => book.shelf !== originShelf).concat(updatedBooks)

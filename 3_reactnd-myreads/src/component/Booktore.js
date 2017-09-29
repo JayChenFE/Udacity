@@ -23,11 +23,11 @@ class Bookstroe extends Component {
                     </div>) :
                     (<div className="list-books-content">
                         <Bookshelf name='Currently Reading' books={this.filterBook('currentlyReading')}
-                            moveBook={moveBook} displaySelect={true} />
+                            moveBook={moveBook} displaySelect={true} shelf='currentlyReading' />
                         <Bookshelf name='Want to Read' books={this.filterBook('wantToRead')}
-                            moveBook={moveBook} displaySelect={true} />
+                            moveBook={moveBook} displaySelect={true} shelf='wantToRead' />
                         <Bookshelf name='Read' books={this.filterBook('read')}
-                            moveBook={moveBook} displaySelect={true} />
+                            moveBook={moveBook} displaySelect={true} shelf='read' />
                     </div>)
                 }
                 <div className="open-search">
