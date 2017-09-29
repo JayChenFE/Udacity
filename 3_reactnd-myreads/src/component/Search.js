@@ -9,25 +9,22 @@ class Search extends Component {
         super()
         this.state = { books: [] }
     }
-
-
-
     search = query => {
-
         const { existBooks } = this.props
         BooksAPI.search(query.trim(), 20).then(resultBooks => {
             if (resultBooks && resultBooks.length > 0) {
-
+                //merge the books
                 const mergedBooks =
                     resultBooks.filter(book =>
-                        existBooks.findIndex(existBook => existBook.id === book.id) === -1)
+                        existBooks.findIndex(existBook =>
+                            existBook.id === book.id) === -1)
                         .map(book => {
                             book.shelf = 'none'
                             return book
-                        }).concat(
-                        existBooks.filter(book =>
-                            resultBooks.findIndex(resultBook => resultBook.id === book.id) >= 0))
-
+                        })
+                        .concat(existBooks.filter(book =>
+                            resultBooks.findIndex(resultBook =>
+                                resultBook.id === book.id) >= 0))
 
                 this.setState({ books: mergedBooks })
             }

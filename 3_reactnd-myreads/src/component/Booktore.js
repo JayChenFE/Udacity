@@ -22,9 +22,12 @@ class Bookstroe extends Component {
                         <Loading color='#aaa'></Loading>
                     </div>) :
                     (<div className="list-books-content">
-                        <Bookshelf name='Currently Reading' books={this.filterBook('currentlyReading')} moveBook={moveBook} />
-                        <Bookshelf name='Want to Read' books={this.filterBook('wantToRead')} moveBook={moveBook} />
-                        <Bookshelf name='Read' books={this.filterBook('read')} moveBook={moveBook} />
+                        <Bookshelf name='Currently Reading' books={this.filterBook('currentlyReading')}
+                            moveBook={moveBook} displaySelect={true} />
+                        <Bookshelf name='Want to Read' books={this.filterBook('wantToRead')}
+                            moveBook={moveBook} displaySelect={true} />
+                        <Bookshelf name='Read' books={this.filterBook('read')}
+                            moveBook={moveBook} displaySelect={true} />
                     </div>)
                 }
                 <div className="open-search">

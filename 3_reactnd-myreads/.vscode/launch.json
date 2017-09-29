@@ -1,0 +1,79 @@
+// {
+//     // 使用 IntelliSense 了解相关属性。 
+//     // 悬停以查看现有属性的描述。
+//     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "type": "chrome",
+//             "request": "launch",
+//             "name": "Launch Chrome against localhost",
+//             "url": "http://localhost:8080",
+//             "webRoot": "${workspaceRoot}"
+//         },
+//         {
+//             "name": "Chrome",
+//             "type": "chrome",
+//             "request": "launch",
+//             "url": "http://localhost:3000",
+//             "webRoot": "${workspaceRoot}/src",
+//             "userDataDir": "${workspaceRoot}/.vscode/chrome",
+//             "sourceMapPathOverrides": {
+//               "webpack:///src/*": "${webRoot}/*"
+//             }
+//           }
+//     ]
+// }
+
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "Launch Chrome against localhost",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+  
+        "sourceMaps": true,
+        "runtimeArgs": [
+          "--disable-session-crashed-bubble",
+          "--disable-infobars"
+        ],
+        "trace": true,
+        "webRoot": "${workspaceRoot}/src",
+        "userDataDir": "D:\\code\\chromeDummy",
+        "sourceMapPathOverrides": {
+          "webpack:///./~/*": "${webRoot}/node_modules/*", // Example: "webpack:///./~/querystring/index.js" -> "/Users/me/project/node_modules/querystring/index.js"
+          "webpack:///./*": "${webRoot}/*" ,// Example: "webpack:///./src/app.js" -> "/users/me/project/src/app.js",
+          "webpack:///*": "*", // Example: "webpack:///C:/project/app.ts" -> "C:/project/app.ts"
+          "webpack:///src/*": "${webRoot}/*" // Example: "webpack:///src/App.js" -> "C:/project/src/App.js"
+        }
+      },
+      {
+        "name": "Launch Chrome against localhost, with sourcemaps",
+        "type": "chrome",
+        "request": "attach",
+        "port": 9222,
+        "sourceMaps": true,
+        "webRoot": "${workspaceRoot}/src",
+        "trace": true,
+        "sourceMapPathOverrides": {
+          "webpack:///./~/*": "${workspaceRoot}/node_modules/*",
+          "webpack:///./src/*": "${workspaceRoot}/src/*"
+        }
+      }
+    ]
+  }
+  
+  
+  // {
+  //   "version": "0.2.0",
+  //   "configurations": [{
+  //     "name": "LaunchChrome",
+  //     "type": "chrome",
+  //     "request": "launch",
+  //     "url": "http://localhost:4200",
+  //     "sourceMaps": true,
+  //     "webRoot": "${workspaceRoot}",
+  //     "userDataDir": "${workspaceRoot}/.vscode/chrome"
+  //   }]
+  // }

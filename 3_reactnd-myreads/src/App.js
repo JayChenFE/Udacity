@@ -19,6 +19,19 @@ class BooksApp extends React.Component {
     })
   }
 
+  moveBooks = (originShelf, destinationShelf) => {
+    let { books } = this.state,
+      updatedBooks = books.filter(book => book.shelf === originShelf)
+    allBooks = []
+
+    updatedBooks.forEach(book => {
+      BooksAPI.update(book, updatedShelf)
+      book.shelf = destinationShelf
+    })
+    allBooks = books.filter(book => book.shelf !== originShelf).concat(updatedBooks)
+    this.setState({ book: allBooks })
+  }
+
   moveBook = (book, updatedShelf) => {
     const { books } = this.state
     let updatedBooks = Object.assign([], books),
@@ -44,7 +57,8 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={_ =>
           (<Bookstroe
             books={books}
-            moveBook={this.moveBook}>
+            moveBook={this.moveBook}
+            moveBooks={this.moveBooks}>
           </Bookstroe>
           )}></Route>
         <Route path='/search' render={_ => (

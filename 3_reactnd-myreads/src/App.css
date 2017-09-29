@@ -125,6 +125,7 @@ body, .app {
 
 .book {
   width: 140px;
+  text-align: center;
 }
 .book-title,
 .book-authors {

@@ -1,42 +1,44 @@
 import React, { Component } from 'react'
+import StarRatingComponent from 'react-star-rating-component'
 
 class Book extends Component {
 
-    constructor() {
-        super()
-        this.state = { shelf: 'none' }
+    constructor(props) {
+        super(props)
+        const rating = +(localStorage.getItem(`${this.props.id}rating`) || "5")
+        this.state = { shelf: 'none', rating: rating }
     }
 
     componentDidMount() {
-        const { shelf } = this.props;
-        this.setState({ shelf });
+        const { shelf } = this.props
+        this.setState({ shelf })
     }
     moveBook = value => {
-        this.props.moveBook({ id: this.props.id }, value)
+        this.props.moveBook(this.props, value)
         this.setState({ shelf: value })
     }
-
+    onStarClick(nextValue, prevValue, name) {
+        localStorage.setItem(`${this.props.id}rating`, nextValue)
+        this.setState({ rating: nextValue })
+    }
     render() {
-        const { title, authors, shelf, imageLinks: { thumbnail } } = this.props
-
+        const { rating } = this.state
+        const { id, title, authors, shelf, imageLinks: { thumbnail } } = this.props
+        let author = authors ? authors.join(' ') : ''
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnail}")` }}></div>
-                    <div className="book-shelf-changer">
-                        <select
-                            value={shelf}
-                            onChange={e => this.moveBook(e.target.value)}>
-                            <option value="none" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnail}")` }}>
                     </div>
+                   
                 </div>
                 <div className="book-title">{title}</div>
-                <div className="book-authors">{authors}</div>
+                <div className="book-authors">{author}</div>
+                <StarRatingComponent
+                    name={`${id}rate`}
+                    starCount={10}
+                    value={rating}
+                    onStarClick={this.onStarClick.bind(this)} />
             </div>
         )
     }
