@@ -10,7 +10,7 @@ class Bookstroe extends Component {
     }
 
     render() {
-        const { moveBook, books } = this.props
+        const { moveBook, moveBooks, books } = this.props
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -19,15 +19,15 @@ class Bookstroe extends Component {
                 {books.length === 0 ?
                     (<div className="loading">
                         <h2>loading...</h2>
-                        <Loading color='#aaa'></Loading>
+                        <Loading />
                     </div>) :
                     (<div className="list-books-content">
                         <Bookshelf name='Currently Reading' books={this.filterBook('currentlyReading')}
-                            moveBook={moveBook} displaySelect={true} shelf='currentlyReading' />
+                            moveBook={moveBook} moveBooks={moveBooks} displaySelect={true} shelf='currentlyReading' />
                         <Bookshelf name='Want to Read' books={this.filterBook('wantToRead')}
-                            moveBook={moveBook} displaySelect={true} shelf='wantToRead' />
+                            moveBook={moveBook} moveBooks={moveBooks} displaySelect={true} shelf='wantToRead' />
                         <Bookshelf name='Read' books={this.filterBook('read')}
-                            moveBook={moveBook} displaySelect={true} shelf='read' />
+                            moveBook={moveBook} moveBooks={moveBooks} displaySelect={true} shelf='read' />
                     </div>)
                 }
                 <div className="open-search">

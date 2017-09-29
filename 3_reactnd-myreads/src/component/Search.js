@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import Bookshelf from './Bookshelf'
-
 class Search extends Component {
 
     constructor() {
@@ -30,7 +29,13 @@ class Search extends Component {
             }
         })
     }
-
+    moveBook = (book, updatedShelf) => {
+        const { books } = this.setState
+        let updatedBooks = Object.assign([], books)
+        this.props.moveBook(book, updatedShelf)
+        updatedBooks.filter(b => b.id === book.id).shelf = updatedShelf
+        this.setState({ books: updatedBooks })
+    }
     render() {
 
         const { books } = this.state
@@ -55,7 +60,6 @@ class Search extends Component {
             </div>
         )
     }
-
 }
 
 export default Search

@@ -2,14 +2,21 @@ import React, { Component } from 'react'
 
 class Select extends Component {
 
-    move = value => {
-        const { category, shelf, moveBook, moveBooks } = this.props
+    constructor(props) {
+        super(props)
+        const { shelf } = this.props
+        this.state = { shelf }
+    }
 
+    move = value => {
+        const { category, moveBook, moveBooks } = this.props
+        const { shelf } = this.state
         category ? moveBooks(shelf, value) : moveBook(value)
+        this.setState({ shelf: value })
     }
 
     render() {
-        const { shelf } = this.props
+        const { shelf } = this.state
         return (
             <div className="book-shelf-changer">
                 <select
@@ -24,7 +31,6 @@ class Select extends Component {
             </div>
         )
     }
-
 }
 
 export default Select

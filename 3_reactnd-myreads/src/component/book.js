@@ -31,7 +31,7 @@ class Book extends Component {
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnail}")` }}>
                     </div>
-                    <Select category={false} shelf={shelf} moveBook={this.moveBook.bind(this)} />
+                    <Select category={false} shelf={shelf} moveBook={this.moveBook} />
                 </div>
                 <div className="book-title">{title}</div>
                 <div className="book-authors">{author}</div>
