@@ -23,4 +23,4 @@ npm start
 
 ## Notes
 
-- The star ranking datas are storaged in the localStorge of the Browser
+- The star ranking datas are storaged in the localStorge of the browser
