@@ -14,14 +14,17 @@ class Book extends Component {
         const { shelf } = this.props
         this.setState({ shelf })
     }
+
     moveBook = value => {
         this.props.moveBook(this.props, value)
         this.setState({ shelf: value })
     }
+
     onStarClick(nextValue, prevValue, name) {
         localStorage.setItem(`${this.props.id}rating`, nextValue)
         this.setState({ rating: nextValue })
     }
+    
     render() {
         const { rating } = this.state
         const { id, title, authors, shelf, imageLinks: { thumbnail } } = this.props

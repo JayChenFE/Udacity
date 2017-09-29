@@ -8,6 +8,7 @@ class Search extends Component {
         super()
         this.state = { books: [] }
     }
+    
     search = query => {
         const { existBooks } = this.props
         BooksAPI.search(query.trim(), 20).then(resultBooks => {
@@ -29,15 +30,8 @@ class Search extends Component {
             }
         })
     }
-    moveBook = (book, updatedShelf) => {
-        const { books } = this.setState
-        let updatedBooks = Object.assign([], books)
-        this.props.moveBook(book, updatedShelf)
-        updatedBooks.filter(b => b.id === book.id).shelf = updatedShelf
-        this.setState({ books: updatedBooks })
-    }
+   
     render() {
-
         const { books } = this.state
         const { moveBook } = this.props
         return (
@@ -61,7 +55,6 @@ class Search extends Component {
         )
     }
 }
-
 export default Search
 
 

@@ -39,6 +39,7 @@ class BooksApp extends React.Component {
       bookIndex = books.findIndex(b => b.id === book.id)
 
     if (bookIndex === -1) {
+      copyBook.shelf = updatedShelf
       updatedBooks.push(copyBook)
     } else {
       updatedBooks[bookIndex].shelf = updatedShelf
