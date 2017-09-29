@@ -7,3 +7,7 @@
     - [源码](https://github.com/JayChenFE/Udacity/tree/master/2_Website_Optimization_zh)
     - [预览 index.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/)
     - [预览 pizza.html](https://jaychenfe.github.io/Udacity/2_Website_Optimization_zh/views/pizza.html)
+
+- 3.**React图书管理应用**
+    - [源码](https://github.com/JayChenFE/Udacity/tree/master/3_reactnd-myreads)
+    
