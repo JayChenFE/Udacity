@@ -17,10 +17,10 @@ npm start
 ## Features
 
 - Arranging books by categories
-- Move books between shelves
-- search  and add books to the shelves
-- star ranking for the books
+- Moving books between shelves
+- Searching  and adding books to the shelves
+- Ranking the books
 
 ## Notes
 
-- the star ranking datas are storaged in the localStorge of the Browser
+- The star ranking datas are storaged in the localStorge of the Browser
