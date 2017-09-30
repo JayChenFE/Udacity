@@ -8,8 +8,8 @@ class Search extends Component {
         super()
         this.state = { books: [] }
     }
-    
-    search = query => {
+
+    query = query => {
         const { existBooks } = this.props
         BooksAPI.search(query.trim(), 20).then(resultBooks => {
             if (resultBooks && resultBooks.length > 0) {
@@ -30,7 +30,7 @@ class Search extends Component {
             }
         })
     }
-   
+
     render() {
         const { books } = this.state
         const { moveBook } = this.props
@@ -39,13 +39,14 @@ class Search extends Component {
                 <div className="search-books-bar">
                     <Link className="close-search" to='/'>Close</Link>
                     <div className="search-books-input-wrapper">
-                        <input type="text" placeholder="Type in  title or author, and press Enter"
-                            //onChange={event => this.updateQuery(event.target.value)}
-                            onKeyUp={event => {
-                                if (event.keyCode === 13) {
-                                    this.search(event.target.value);
-                                }
-                            }} />
+                        <input type="text" placeholder="search by  title or author"
+                            onChange={event => this.query(event.target.value)}
+                        // onKeyUp={event => {
+                        //     if (event.keyCode === 13) {
+                        //         this.search(event.target.value);
+                        //     }
+                        //}} 
+                        />
                     </div>
                 </div>
                 < div className="search-books-results">
