@@ -2,21 +2,19 @@ import React, { Component } from 'react'
 
 class Select extends Component {
 
-    constructor(props) {
-        super(props)
-        const { shelf } = this.props
-        this.state = { shelf }
+    constructor() {
+        super()
+        this.state = { shelf: 'none' }
     }
 
-    move = value => {
-        const { category, moveBook, moveBooks } = this.props
-        const { shelf } = this.state
-        category ? moveBooks(shelf, value) : moveBook(value)
-        this.setState({ shelf: value })
+    move = newShelf => {
+        const { shelf, category, moveBook, moveBooks } = this.props
+        category ? moveBooks(shelf, newShelf) : moveBook(newShelf)
+        this.setState({ shelf: newShelf })
     }
 
     render() {
-        const { shelf } = this.state
+        const { shelf } = this.props
         return (
             <div className="book-shelf-changer">
                 <select

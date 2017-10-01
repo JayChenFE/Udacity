@@ -6,7 +6,8 @@ class Book extends Component {
 
     constructor(props) {
         super(props)
-        const rating = +(localStorage.getItem(`${this.props.id}rating`) || "5")
+        const { id } = this.props
+        const rating = +(localStorage.getItem(`${id}rating`) || "5")
         this.state = { shelf: 'none', rating: rating }
     }
 
@@ -24,11 +25,12 @@ class Book extends Component {
         localStorage.setItem(`${this.props.id}rating`, nextValue)
         this.setState({ rating: nextValue })
     }
-    
+
     render() {
-        const { rating } = this.state
-        const { id, title, authors, shelf, imageLinks: { thumbnail } } = this.props
-        let author = authors ? authors.join(' ') : ''
+        const { rating, shelf } = this.state
+        const { id, title, authors, imageLinks } = this.props
+        const thumbnail = imageLinks ? imageLinks.thumbnail : ''
+        const author = authors ? authors.join(' ') : ''
         return (
             <div className="book">
                 <div className="book-top">
