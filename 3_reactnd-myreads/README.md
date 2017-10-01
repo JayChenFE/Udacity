@@ -18,6 +18,7 @@ npm start
 
 - Arranging books by categories
 - Moving books between shelves
+- Moving all the books of the same category
 - Searching books
 - Adding books from search result to the shelves
 - Ranking  books
