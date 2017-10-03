@@ -10,4 +10,7 @@
 
 - 3.**React图书管理应用**
     - [源码](https://github.com/JayChenFE/Udacity/tree/master/3_reactnd-myreads)
-    
+
+
+- 4.**Jasmine测试**
+    - [源码](https://github.com/JayChenFE/Udacity/tree/master/4_feed_reader_testing)    
