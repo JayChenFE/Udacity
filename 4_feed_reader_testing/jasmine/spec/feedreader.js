@@ -85,9 +85,8 @@ $(function () {
             loadFeed(0, done)
         })
 
-        it('contains at least one entry when loaded', function (done) {
+        it('contains at least one entry when loaded', function () {
             expect($('.feed .entry').length).not.toEqual(0)
-            done()
         })
     })
 
