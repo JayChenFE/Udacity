@@ -85,8 +85,9 @@ $(function () {
             loadFeed(0, done)
         })
 
-        it('contains at least one entry when loaded', function () {
+        it('contains at least one entry when loaded', function (done) {
             expect($('.feed .entry').length).not.toEqual(0)
+            done()
         })
     })
 
@@ -106,9 +107,10 @@ $(function () {
             loadFeed(1, done)
         });
 
-        it('feed Content changes when reloaded', function () {
+        it('feed Content changes when reloaded', function (done) {
             $newFeed = $('.header-title').html()
             expect($feed).not.toEqual($newFeed)
+            done()
         });
 
     })
